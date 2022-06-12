@@ -23,10 +23,11 @@ const Collection = () => {
             if (res.status === 200 && res.data.items.length > 0) {
                 setPageData(res.data)
                 setStatus("ok")
+            } else {
+                setStatus("error")
             }
-            // else {setStatus("error")}
-            setPageData(galleryMock)
-            setStatus("ok")
+            // setPageData(galleryMock)
+            // setStatus("ok")
         })
         .catch(res => {setStatus("error")})
     }

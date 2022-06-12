@@ -19,6 +19,8 @@ const Gallery = ({data}) => {
   }
 
   const handleClose = () => setCarrousel(false)
+
+  console.log(data.includes.Asset)
   
   return (
     <StyledGalleryPage  className="hey">
