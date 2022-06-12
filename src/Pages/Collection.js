@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import api from "../api/APIHandler"
 import { useParams  } from 'react-router-dom';
 import galleryMock from '../mocks/gallery.mock';
+import Layout from '../Components/Layout'
 
 import Gallery from '../Components/Gallery'
 
@@ -40,12 +41,12 @@ const Collection = () => {
 
       
   return (
-    <>
+    <Layout>
         {status === "loading" && <div>Loading...</div>}
         {status === "error" && <div>Sorry, there was an error charging data or the page doesn't exist.</div>}
         {status === "ok" && <Gallery data={pageData}/>}
         
-    </>
+    </Layout>
   )
 }
 

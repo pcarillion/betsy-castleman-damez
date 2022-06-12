@@ -8,7 +8,6 @@ import Biography from './Pages/Biography'
 import Contact from './Pages/Contact'
 import Collection from './Pages/Collection'
 
-import Layout from './Components/Layout'
 import HelmetComponent from './Components/Helmet';
 
 const root = ReactDOM.createRoot(
@@ -16,14 +15,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    <HelmetComponent/>
-    <Layout>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path=":slug" element={<Collection />} />
         <Route path="biography" element={<Biography />} />
         <Route path="contact" element={<Contact />} />
       </Routes>
-    </Layout>
   </BrowserRouter>
 );

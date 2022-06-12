@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import api from "../api/APIHandler";
 import menuMock from '../mocks/menu.mock';
+import HelmetComponent from './Helmet';
 
 import {StyledMenu, StyledPageContainer, StyledPageContent} from '../Styles/Layout'
 
@@ -44,7 +45,8 @@ const Layout = ({children}) => {
 
   return (
       <StyledPageContainer>
-        <StyledMenu>
+            <HelmetComponent/>
+            <StyledMenu>
             <Link to="/"><h1>Betsy Castleman Damez</h1></Link>
             <div class={`menu-icon ${menuOpen && 'cross'}`} onClick={() => setMenuOpen(menuOpen => !menuOpen)}>
                 <div></div>
