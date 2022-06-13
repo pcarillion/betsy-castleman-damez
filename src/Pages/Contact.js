@@ -27,7 +27,14 @@ const Contact = () => {
   return (
     <Layout>
       <StyledFormContainer >
-        <form id="contactForm" netlify-honeypot="bot-field" name="contact" netlify>
+        <form id="contactForm"
+            method="POST" 
+            data-netlify="true"
+            data-netlify-honeypot="bot-field" 
+            data-netlify-recaptcha="true" 
+            name="contact" 
+            action="/contact"
+            netlify>
           <StyledForm>
 
           {
