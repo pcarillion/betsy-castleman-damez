@@ -7,13 +7,27 @@ import { useParams  } from 'react-router-dom';
 const Contact = () => {
   let {result} = useParams();
   const [formSubmitted, setFormSubmitted] = useState(false)
-  useEffect(()=> {
-    if(result==="success") setFormSubmitted(true)
-  },[result])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let myForm = document.getElementById("contactForm");
+    let formData = new FormData(myForm);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => setFormSubmitted(true))
+      .catch((error) => alert(error));
+  };
+  document
+  .querySelector("form")
+  .addEventListener("submit", handleSubmit);
+
   return (
     <Layout>
       <StyledFormContainer >
-        <form  name="contact" method="POST" data-netlify="true" action="/contact/success">
+        <form id="contactForm"  name="contact" method="POST" data-netlify="true" action="/contact/success">
           <StyledForm>
 
           {
