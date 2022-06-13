@@ -27,7 +27,7 @@ const Contact = () => {
   return (
     <Layout>
       <StyledFormContainer >
-        <form id="contactForm"  name="contact" netlify>
+        <form id="contactForm" netlify-honeypot="bot-field" name="contact" netlify>
           <StyledForm>
 
           {
@@ -51,7 +51,7 @@ const Contact = () => {
               <label>Message:</label> 
               <textarea name="message"></textarea>
             
-            
+              <input type="hidden" name="form-name" value="contact" />
               <button type="submit">Send</button>
             </>
           }
