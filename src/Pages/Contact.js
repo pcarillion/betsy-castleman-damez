@@ -12,7 +12,7 @@ const Contact = () => {
     e.preventDefault();
     let myForm = document.getElementById("contactForm");
     let formData = new FormData(myForm);
-    fetch("/", {
+    fetch("/contact", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString(),
@@ -20,14 +20,14 @@ const Contact = () => {
       .then(() => setFormSubmitted(true))
       .catch((error) => alert(error));
   };
-  document
-  .querySelector("form")
-  .addEventListener("submit", handleSubmit);
+  useEffect(() => {
+    document.getElementById("contactForm").addEventListener("submit", handleSubmit);
+  }, [])
 
   return (
     <Layout>
       <StyledFormContainer >
-        <form id="contactForm"  name="contact" method="POST" data-netlify="true" action="/contact/success">
+        <form id="contactForm"  name="contact" netlify>
           <StyledForm>
 
           {
