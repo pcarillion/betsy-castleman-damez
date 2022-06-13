@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import breakpoints from '../constants/breakpoints'
 
 
-export const StyledForm = styled.form`
+export const StyledForm = styled.div`
     Width: 100%;
     display: flex;
     flex-direction: column;

@@ -55,10 +55,10 @@ const Layout = ({children}) => {
             </div>
             <ul className={menuOpen && 'open'}>
                 {menuItems.map((item, key) => {
-                    return <li key={key}><Link to={`/${item.slug}`}>{item.title}</Link></li>
+                    return <li key={key} style={{order: item.order}}><Link to={`/gallery/${item.slug}`}>{item.title}</Link></li>
                 })}
                 <li>
-                    <Link to="/biography">Biography</Link> 
+                    <Link to="/page/biography">Biography</Link> 
                 </li>
                 <li>
                     <Link to="/contact">Contact</Link> 
