@@ -20,22 +20,18 @@ const Gallery = ({data}) => {
 
   const handleClose = () => setCarrousel(false)
 
-  console.log(data.includes.Asset)
 
   let assetsArray = data.includes.Asset
   let orderArray = data.items[0].fields.pictures
   for (let i = 0; i < assetsArray.length; i ++) {
-    console.log(assetsArray[i].fields.file.url, orderArray[i].sys.id)
     for (let j = 0; j < orderArray.length; j ++){
       if (assetsArray[j].fields.file.url.includes(orderArray[i].sys.id)) {
-        console.log(assetsArray[i].fields.title)
         orderArray[i].sys.url = assetsArray[j].fields.file.url
         orderArray[i].sys.title = assetsArray[j].fields.title
         orderArray[i].sys.description = assetsArray[j].fields.description
       }
     }
   }
-  console.log(orderArray)
   
   return (
     <StyledGalleryPage  className="hey">

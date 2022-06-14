@@ -25,7 +25,6 @@ const Page = () => {
       .then(res => {
           if (res.status === 200 && res.data.items.length > 0) {
               setPageData(res.data)
-              console.log(res.data)
               setStatus("ok")
           } else {
               setStatus("error")
