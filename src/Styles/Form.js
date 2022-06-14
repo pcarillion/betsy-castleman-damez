@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import breakpoints from '../constants/breakpoints'
 
 
-export const StyledForm = styled.div`
+export const StyledForm = styled.form`
     Width: 100%;
     display: flex;
     flex-direction: column;
@@ -28,6 +28,9 @@ export const StyledForm = styled.div`
             background-color: #EEEEEE;
             cursor: pointer;
         }
+    }
+    p {
+        text-align: center;
     }
 
 `

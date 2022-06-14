@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../api/APIHandler";
 import menuMock from '../mocks/menu.mock';
 import HelmetComponent from './Helmet';
+import emailjs from '@emailjs/browser'
 
 import {StyledMenu, StyledPageContainer, StyledPageContent} from '../Styles/Layout'
 
@@ -23,14 +24,14 @@ const Layout = ({children}) => {
         .then(res => {
             if (res.status === 200 && res.data.items.length > 0) {
                 let items = []
-                res.data.items.forEach(item =>items.push({title: item.fields.name, slug: item.fields.slug}))
+                res.data.items.forEach(item =>items.push({title: item.fields.name, slug: item.fields.slug, order: item.fields.order}))
                 setMenuItems(items)
                 setMenuStatus("ok")
             }
             else {
-                let items = []
-                menuMock.items.forEach(item =>items.push({title: item.fields.name, slug: item.fields.slug}))
-                setMenuItems(items)
+                // let items = []
+                // menuMock.items.forEach(item =>items.push({title: item.fields.name, slug: item.fields.slug}))
+                // setMenuItems(items)
                 setMenuStatus("error")
             }
         })
@@ -39,9 +40,17 @@ const Layout = ({children}) => {
     
     useEffect(() => {
         initDatas()
-      }, [])
+    }, [])
 
-
+    useEffect(() => {
+        let array = menuItems
+        array = array.sort((a,b) => {
+            var x = a.order; var y = b.order;
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        })
+        console.log(array)
+        setMenuItems(array)
+    }, [menuItems])
 
   return (
       <StyledPageContainer>
@@ -57,10 +66,10 @@ const Layout = ({children}) => {
                 {menuItems.map((item, key) => {
                     return <li key={key} style={{order: item.order}}><Link to={`/gallery/${item.slug}`}>{item.title}</Link></li>
                 })}
-                <li>
+                <li style={{order: "100"}}>
                     <Link to="/page/biography">Biography</Link> 
                 </li>
-                <li>
+                <li style={{order: "101"}}>
                     <Link to="/contact">Contact</Link> 
                 </li>
             </ul>
@@ -68,6 +77,13 @@ const Layout = ({children}) => {
         <StyledPageContent>
             {children}
         </StyledPageContent>
+        <footer>
+            <script type="text/javascript">
+                (function(){
+                    emailjs.init("-67YL1VTKl6b_gx48")
+                })();
+            </script>
+        </footer>
       </StyledPageContainer>
   )
 }

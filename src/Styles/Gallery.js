@@ -36,9 +36,10 @@ export const StyledGallery = styled.div`
             width: 90%;
         }
         img {
-            height: 200px;
+            max-height: 200px;
             width: auto;
             margin-bottom: 20px;
+            max-width: 100%;
         }
     }
 `

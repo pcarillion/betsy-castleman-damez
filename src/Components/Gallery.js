@@ -21,6 +21,21 @@ const Gallery = ({data}) => {
   const handleClose = () => setCarrousel(false)
 
   console.log(data.includes.Asset)
+
+  let assetsArray = data.includes.Asset
+  let orderArray = data.items[0].fields.pictures
+  for (let i = 0; i < assetsArray.length; i ++) {
+    console.log(assetsArray[i].fields.file.url, orderArray[i].sys.id)
+    for (let j = 0; j < orderArray.length; j ++){
+      if (assetsArray[j].fields.file.url.includes(orderArray[i].sys.id)) {
+        console.log(assetsArray[i].fields.title)
+        orderArray[i].sys.url = assetsArray[j].fields.file.url
+        orderArray[i].sys.title = assetsArray[j].fields.title
+        orderArray[i].sys.description = assetsArray[j].fields.description
+      }
+    }
+  }
+  console.log(orderArray)
   
   return (
     <StyledGalleryPage  className="hey">
@@ -30,12 +45,12 @@ const Gallery = ({data}) => {
         {documentToReactComponents(data.items[0].fields.description)}
       </div>
       <StyledGallery>
-        {data.includes.Asset.map((picture, i) => {
+        {orderArray.map((picture, i) => {
           return (
             <div className="card" key={i}  onClick={() => handleCarrousel(i)}>
-                <img src={picture.fields.file.url} alt={picture.fields.title}/>
-                <p>{picture.fields.title}</p>
-                <p>{picture.fields.description}</p>
+                <img src={picture.sys.url} alt={picture.sys.title}/>
+                <p>{picture.sys.title}</p>
+                <p>{picture.sys.description}</p>
             </div>
           )
           }

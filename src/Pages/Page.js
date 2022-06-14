@@ -3,7 +3,10 @@ import { useParams  } from 'react-router-dom';
 import api from "../api/APIHandler"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import Layout from '../Components/Layout'
+import Layout from '../Components/Layout';
+
+import {StyledContent} from '../Styles/Page';
+
 
 const Page = () => {
 
@@ -39,8 +42,12 @@ const Page = () => {
   }, [slug])
   return (
     <Layout>
-    <h3>{pageData.items[0].fields.name}</h3>
-      {documentToReactComponents(pageData.items[0].fields.textContent)}
+    {status === "ok"
+    ? <>
+      <h2>{pageData.items[0].fields.name}</h2>
+      <StyledContent>{documentToReactComponents(pageData.items[0].fields.textContent)}</StyledContent>
+    </>
+    : <div>Sorry, there was an error charging data or the page doesn't exist.</div>}
     </Layout>
   )
 }
