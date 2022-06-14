@@ -50,7 +50,7 @@ const Gallery = ({data}) => {
             <div className="card" key={i}  onClick={() => handleCarrousel(i)}>
                 <img src={picture.sys.url} alt={picture.sys.title}/>
                 <p>{picture.sys.title}</p>
-                <p>{picture.sys.description}</p>
+                {/* <p>{picture.sys.description}</p> */}
             </div>
           )
           }

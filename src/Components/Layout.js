@@ -63,9 +63,15 @@ const Layout = ({children}) => {
                 <div></div>
             </div>
             <ul className={menuOpen && 'open'}>
-                {menuItems.map((item, key) => {
-                    return <li key={key} style={{order: item.order}}><Link to={`/gallery/${item.slug}`}>{item.title}</Link></li>
-                })}
+                {/* {menuItems.map((item, key) => {
+                    return <li><Link to={`/gallery/`}></Link></li>
+                })} */}
+                <li><Link to={`/gallery/creation`}>La Création</Link></li>
+                <li><Link to={`/gallery/portraits`}>Portraits</Link></li>
+                <li><Link to={`/gallery/bords-de-mer-et-paysages`}>Bords de Mer et Paysages</Link></li>
+                <li><Link to={`/gallery/afrique`}>Afrique</Link></li>
+                <li><Link to={`/gallery/collages`}>Collages du confinement</Link></li>
+                <li><Link to={`/gallery/decors-eglise`}>Décors d'église</Link></li>
                 <li style={{order: "100"}}>
                     <Link to="/page/biography">Biography</Link> 
                 </li>

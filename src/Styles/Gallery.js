@@ -22,6 +22,7 @@ export const StyledGallery = styled.div`
         display: flex;
         align-items: center;
         flex-direction: column;
+        justify-content: space-between;
         padding: 30px 10px;
         margin: 1%;
         border-radius: 5px;
