@@ -22,26 +22,26 @@ const Gallery = ({data}) => {
 
 
   let assetsArray = data.includes.Asset
-  let orderArray = data.items[0].fields.pictures
+  let picturesOrderedArray = data.items[0].fields.pictures
   for (let i = 0; i < assetsArray.length; i ++) {
-    for (let j = 0; j < orderArray.length; j ++){
-      if (assetsArray[j].fields.file.url.includes(orderArray[i].sys.id)) {
-        orderArray[i].sys.url = assetsArray[j].fields.file.url
-        orderArray[i].sys.title = assetsArray[j].fields.title
-        orderArray[i].sys.description = assetsArray[j].fields.description
+    for (let j = 0; j < picturesOrderedArray.length; j ++){
+      if (assetsArray[j].fields.file.url.includes(picturesOrderedArray[i].sys.id)) {
+        picturesOrderedArray[i].sys.url = assetsArray[j].fields.file.url
+        picturesOrderedArray[i].sys.title = assetsArray[j].fields.title
+        picturesOrderedArray[i].sys.description = assetsArray[j].fields.description
       }
     }
   }
   
   return (
     <StyledGalleryPage  className="hey">
-      {carrousel && <Carrousel open={carrousel} pictures={data.includes.Asset} selectedPicture={selectedPicture} callback={changePicture} callbackClose={handleClose}/>}
+      {carrousel && <Carrousel open={carrousel} pictures={picturesOrderedArray} selectedPicture={selectedPicture} callback={changePicture} callbackClose={handleClose}/>}
       <h2 style={{marginLeft: "1%"}}>{data.items[0].fields.name}</h2>
       <div className="description">
         {documentToReactComponents(data.items[0].fields.description)}
       </div>
       <StyledGallery>
-        {orderArray.map((picture, i) => {
+        {picturesOrderedArray.map((picture, i) => {
           return (
             <div className="card" key={i}  onClick={() => handleCarrousel(i)}>
                 <img src={picture.sys.url} alt={picture.sys.title}/>
