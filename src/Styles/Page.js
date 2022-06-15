@@ -3,6 +3,7 @@
 import styled from 'styled-components'
 
 export const StyledContent = styled.div`
+    margin-bottom: 100px;
     p {
         /* margin-bottom: 20px; */
     }
