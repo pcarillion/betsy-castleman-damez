@@ -7,6 +7,7 @@ export const StyledCarrousel = styled.div`
     width: calc(100vw - 100px);
     position: fixed;
     background-color: #EEEEEE;
+    box-sizing: border-box;
     z-index: 100;
     left: 0;
     top: 0;

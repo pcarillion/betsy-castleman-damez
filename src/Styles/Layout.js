@@ -14,6 +14,7 @@ export const StyledMenu = styled.section`
     width: 450px;
     min-width: 450px;
     padding: 40px 20px;
+    box-sizing: border-box;
     height: 100%;
     h1 {
         margin-top: 0;
@@ -124,6 +125,7 @@ export const StyledMenu = styled.section`
 export const StyledPageContent = styled.section`
     flex-grow: 1;
     padding: 40px 20px;
+    box-sizing: border-box;
     @media screen and (max-width: ${breakpoints.mobile}){
         width: 100vw;
     }
